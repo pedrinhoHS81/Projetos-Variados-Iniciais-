@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> Sua lista de Tarefas</title>
+        <style>
+            body {
+                width: 100%;
+                text-align: center;
+                font-family: monospace;
+                margin-top: 50px;
+                color: white;
+                user-select: none;
+            }
+
+            #geral {
+                width: 500px;
+                background-color: #464ca0;
+                padding: 20px;
+                text-align: center;
+                border-radius: 30px;
+                min-height: 250px;
+                max-width: 600px;
+                margin: 0 auto;
+                padding: 20px;
+            }
+            h1 {
+                text-align: center;
+            }
+            input[type="text"] {
+                width: 65%;
+                height: 38px;
+                font-family: monospace;
+                border: none;
+                border-radius: 8px;
+                padding-left: 10px;
+                font-size: 16px;
+                padding: 10px;
+                margin-bottom: 10px;
+            }
+            button {
+                width: 100%;
+                padding: 10px;
+                background-color: #439b46;
+                color: white;
+                border: none;
+                cursor: pointer;
+            }
+            button:hover {
+                background-color: #012e14;
+            }
+            button:active {
+                background-color: #032310;
+            }
+            tarefas {
+                width: 90%;
+                margin: auto;
+                font-size: 16px;
+                background-color: #439b46;
+                text-align: left;
+                cursor: pointer;
+            }
+        </style>
+</head>
+<body>
+    <div id="geral" >
+<h1>Sua lista de Tarefas</h1>
+<input type="text" placeholder="Digite sua nova Tarefa">
+<button>Adicionar</button>
+   </div>
+   <script>
+    const input = document.querySelector('input[type="text"]');
+    const button = document.querySelector('button');
+    const geral = document.getElementById('geral');
+let marcado = false;
+    button.addEventListener('click', function() {
+        const tarefa = input.value.trim();
+        if (tarefa.value !== '') {
+            const tarefaElement = document.createElement('div');
+            tarefaElement.classList.add('tarefas');
+            tarefaElement.textContent = tarefa;
+            geral.appendChild(tarefaElement);
+            input.value = '';
+            tarefaElement.addEventListener('click', function() {
+                if (marcado == false) {
+                    tarefaElement.style.textDecoration = 'line-through';
+                    marcado = true;
+                } 
+                else {
+                    tarefaElement.style.textDecoration = 'none';
+                    marcado = false;
+                }
+            });
+
+            tarefaElement.addEventListener('dblclick', function() {
+                tarefaElement.remove();
+        });
+        tarefa.addEventListener('dblclick', function() {
+            tarefa.removeChild(tarefa);
+        })
+
+    }
+
+});
+
+   </script>
+</body>
+</html>
